@@ -3,6 +3,7 @@
   <li v-for='music in musics' class='music-wrapper' :key='music.ts'>
     <Music :text='music.text' :id='music.id' :time='music.ts'/>
   </li>
+  <li class='music-wrapper' @click='fetchMusics'> {{loadText}} </li>
 </ul>
 </template>
 
@@ -12,6 +13,8 @@ import axios from 'axios'
 export default {
   data () {
     return {
+      loadText: '加载更多',
+      page: 0,
       musics: []
     }
   },
@@ -25,9 +28,16 @@ export default {
   methods: {
     fetchMusics () {
       let self = this
-      axios.get('/sw/musicList')
+      axios.get(`/sw/musicList/${self.page}`)
         .then(function (res) {
-          self.musics = res.data
+          let {isMore, list} = res.data
+          if (res.data.length !== 0) {
+            self.musics.push(...list)
+            self.page++
+          }
+          if (!isMore) {
+            self.loadText = '没有更多了'
+          }
         }).catch(function (e) {
           console.error(e)
         })
@@ -41,7 +51,7 @@ export default {
   display grid
   grid-template-columns 2fr 1fr 1fr 1fr 1fr 14fr 4fr
   grid-row-gap 16px
-  height 260px
+  height 300px
   overflow scroll
 .music-wrapper
   grid-column 5 / 7
