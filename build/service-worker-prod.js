@@ -52,9 +52,9 @@
 
   function checkSubscription () {
     navigator.serviceWorker.ready
-      .then(function (req) {
+      .then(function (reg) {
         console.log('service worker registered')
-        return registration.pushManager.getSubscription()
+        return reg.pushManager.getSubscription()
       }).then(function (subs) {
         if (subs) {
           document.__subsPrompt = false

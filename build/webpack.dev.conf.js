@@ -9,6 +9,7 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
@@ -28,13 +29,22 @@ module.exports = merge(baseWebpackConfig, {
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    // service worker caching
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'dingke-blog',
+      filename: 'service-worker.js',
+      minify: true,
+      importScripts: [
+        {filename: config.dev.assetsPublicPath + 'static/js/sw-extends.js'}
+      ]
+    }),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
       inject: true,
-      serviceWorkerLoader: `<script>${fs.readFileSync(path.join(__dirname,
-        './service-worker-dev.js'), 'utf-8')}</script>`
+      serviceWorkerLoader: `<script>${fs.readFileSync(path.resolve(__dirname,
+        './service-worker-prod.js'), 'utf-8')}</script>`
     }),
     new FriendlyErrorsPlugin()
   ]
