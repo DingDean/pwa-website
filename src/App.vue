@@ -117,9 +117,16 @@
         </div>
       </transition>
       <transition name='slide-fade' appear>
-        <div v-if='isShown.install' class='grid-center'>
-          <p>如果你喜欢的话，你可以将这个网页<span class='togglebtn' @click='install'>安装</span>到你的桌面。</p>
-        </div>
+        <sw
+          v-if='isShown.info'
+          :showInstall='isShown.install'
+          :showSubs='isShown.subscribe'
+          class='grid-center'/>
+        <!-- <sw -->
+        <!--   v-if='isShown.info' -->
+        <!--   :showInstall='true' -->
+        <!--   :showSubs='true' -->
+        <!--   class='grid-center'/> -->
       </transition>
       <div style='margin-bottom: 64px' class='grid-center'>
       </div>
@@ -136,13 +143,15 @@ export default {
         info: false,
         projects: false,
         music: false,
-        install: false
+        install: false,
+        subscribe: false
       }
     }
   },
   components: {
     project: () => import('./components/projects.vue'),
-    music: () => import('./components/music.vue')
+    music: () => import('./components/musics.vue'),
+    sw: () => import('./components/sw.vue')
   },
   methods: {
     toggle (target) {
@@ -152,21 +161,10 @@ export default {
       this.isShown[target] = !this.isShown[target]
       if (target === 'info') {
         this.isShown.install = this.isShown.info && document.__pwaPrompt
+        this.isShown.subscribe = this.isShown.info && document.__subsPrompt
+        this.isShown.projects = this.isShown.info && this.isShown.projects
+        this.isShown.music = this.isShown.info && this.isShown.music
       }
-    },
-    install () {
-      // Show the prompt
-      document.__pwaPrompt.prompt()
-      // Wait for the user to respond to the prompt
-      document.__pwaPrompt.userChoice
-        .then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the A2HS prompt')
-          } else {
-            console.log('User dismissed the A2HS prompt')
-          }
-          document.__pwaPrompt = null
-        })
     }
   }
 }
@@ -198,14 +196,19 @@ body, html
     grid-template-columns 2fr 1fr 7fr 2fr
     grid-template-rows 16vh max-content
     grid-row-gap 16px
-  .grid-center
-    grid-column 2 / 4
-  .grid-all
-    grid-column 1 / 5
-  .togglebtn
-    color #a0d911
-  .togglebtn:hover
-    cursor pointer
+
+.grid-center
+  grid-column 2 / 4
+
+.grid-all
+  grid-column 1 / 5
+
+.togglebtn
+  color #a0d911
+
+.togglebtn:hover
+  cursor pointer
+
 #welcome-msg
   text-align center
   @media(min-width: 300px) {
