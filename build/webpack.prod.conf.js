@@ -97,7 +97,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
     // service worker caching
     new SWPrecacheWebpackPlugin({
       cacheId: 'dingke-blog',
