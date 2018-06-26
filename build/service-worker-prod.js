@@ -14,7 +14,7 @@
   );
 
   function registerSW () {
-    navigator.serviceWorker.register('service-worker.js')
+    navigator.serviceWorker.register('service_worker.js')
       .then(function(registration) {
         // updatefound is fired if service-worker.js changes.
         registration.onupdatefound = function() {
