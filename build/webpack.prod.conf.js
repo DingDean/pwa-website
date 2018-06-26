@@ -106,7 +106,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       minify: true,
       stripPrefix: 'dist/',
       importScripts: [
-        {filename: config.dev.assetsPublicPath + 'static/js/sw-extends.js'}
+        {filename: config.build.assetsPublicPath + 'static/js/sw-extends.js'}
       ]
     })
   ]
