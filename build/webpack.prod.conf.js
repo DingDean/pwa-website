@@ -101,7 +101,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // service worker caching
     new SWPrecacheWebpackPlugin({
       cacheId: 'dingke-blog',
-      filename: 'service-worker.js',
+      filename: 'service_worker.js',
       staticFileGlobs: ['dist/**/*.{js,html,css}'],
       minify: true,
       stripPrefix: 'dist/',
