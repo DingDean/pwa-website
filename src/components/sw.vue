@@ -68,7 +68,7 @@ export default {
           return axios.post('/sw/register', {
             subscription: sub
           }).then(function (res) {
-            console.log('registered')
+            alert('订阅成功')
           })
         }).catch(function (e) {
           throw new Error('Failed to subscribe' + e)

@@ -57,8 +57,10 @@
         return reg.pushManager.getSubscription()
       }).then(function (subs) {
         if (subs) {
+          console.log('already subscribed')
           document.__subsPrompt = false
         } else {
+          console.log('not yet subscribed')
           document.__subsPrompt = true
         }
       })
