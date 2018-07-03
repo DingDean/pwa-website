@@ -1,9 +1,9 @@
 <template>
 <div class='music-tweet'>
   <p>{{text}}</p>
-  <p>{{ts}}</p>
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 :src='linkLg' class='player-large'></iframe>
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=278 height=52 :src='linkSm' class='player-small'></iframe>
+  <p>{{ts}}</p>
 </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
     },
     ts () {
       let date = new Date(this.time)
-      return date.toLocaleTimeString()
+      return date.toLocaleString()
     }
   }
 }
