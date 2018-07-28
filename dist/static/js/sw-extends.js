@@ -23,7 +23,7 @@ self.addEventListener('notificationclick', function (event) {
       }
     }
     if (clients.openWindow) {
-      return clients.openWindow('/')
+      return clients.openWindow('/?showInfo=0&showMusic=0')
     }
   }))
 })
