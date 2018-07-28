@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class='main-grid'>
     <div class='grid-center'></div>
     <header class='grid-center' id='welcome-msg'>
       <transition appear name='slide-left-right' mode='out-in'>
@@ -53,6 +53,8 @@
         <p>我是一名后端工程师，擅长使用NodeJS。我以编程为生，也以编程为乐。
           我有这么一些<span class='togglebtn' @click="toggle('projects')">小项目</span>，你或许会觉得有用。
         </p>
+        <p>我相信数据能客观得表述一个人，为此我收集了自己的数字足迹，用来定量得认识自己。</p>
+        <p>如果你感兴趣的话，你可以跳转到 <span class='togglebtn' @click='toMineself'>Mineself</span>。</p>
       </div>
     </transition>
     <transition name='slide-fade'>
@@ -150,6 +152,9 @@ export default {
         this.isShown.projects = this.isShown.info && this.isShown.projects
         this.isShown.music = this.isShown.info && this.isShown.music
       }
+    },
+    toMineself () {
+      this.$router.push('/mineself')
     }
   }
 
@@ -157,24 +162,6 @@ export default {
 </script>
 
 <style lang="stylus">
-main
-  display grid
-  grid-template-columns 2fr 1fr 7fr 2fr
-  grid-template-rows 16vh max-content
-  grid-row-gap 16px
-
-.grid-center
-  grid-column 2 / 4
-
-.grid-all
-  grid-column 1 / 5
-
-.togglebtn
-  color #a0d911
-
-.togglebtn:hover
-  cursor pointer
-
 #welcome-msg
   text-align center
   @media(min-width: 300px) {
@@ -188,23 +175,4 @@ main
   }
 .laminated:hover
   cursor pointer
-
-.slide-fade-enter-active
-  transition all .3s ease
-.slide-fade-leave-active
-  transition all .3s ease
-.slide-fade-enter, .slide-fade-leave-to
-  opacity 0
-  transform translateY(10px)
-
-.slide-left-right-enter-active
-  transition all .8s ease
-.slide-left-right-leave-active
-  transition all .8s ease
-.slide-left-right-enter
-  opacity 0
-  transform translateX(5px)
-.slide-left-right-leave-to
-  opacity 0
-  transform translateX(-5px)
 </style>

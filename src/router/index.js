@@ -16,6 +16,10 @@ export default new Router({
         }
       }
     },
+    {
+      path: '/mineself',
+      component: () => import('../views/mineself.vue')
+    },
     {path: '*', component: Main}
   ]
 })
