@@ -54,7 +54,15 @@
           我有这么一些<span class='togglebtn' @click="toggle('projects')">小项目</span>，你或许会觉得有用。
         </p>
         <p>我相信数据能客观得表述一个人，为此我收集了自己的数字足迹，用来定量得认识自己。</p>
-        <p>如果你感兴趣的话，你可以跳转到 <span class='togglebtn' @click='toMineself'>Mineself</span>。</p>
+        <p>如果你感兴趣的话，你可以跳转到 <span class='togglebtn' @click='toMineself'>Mineself</span>。这个页面现在暂时只有自己的编程数据和谷歌搜索数据。</p>
+        <p>同时呢，我发现 Observable 是个好平台，能用它方便的使用任何你能想到的工具来分析，可视化数据。我还在数据可视化的初级道路上，欢迎一起学习，如果能给我些指点那就更棒了！这是我的
+          <a
+            rel='noopener'
+            target='_blank'
+            href='https://beta.observablehq.com/@dingdean'>
+            Observable 主页
+          </a>。
+        </p>
       </div>
     </transition>
     <transition name='slide-fade'>
@@ -82,7 +90,6 @@
 
     <transition name='slide-fade' appear>
       <div v-if='isShown.info'class='grid-center' id='musicoholic'>
-        <!-- <p>我呢，如果不戴耳机的话，是出不了门的。大概是一个人久了，真的非常喜欢<span class='togglebtn' @click="toggle('music')">听音乐</span>。</p> -->
         <p> 我非常喜欢<span class='togglebtn' @click="toggle('music')">听音乐</span>，以至于耳机不离身，大概是一个人太久了吧，哈哈哈。我欧美的歌曲听得比较多，最近迷上了在油管上听各种电子remix，有毒。 </p>
       </div>
     </transition>
@@ -98,7 +105,6 @@
 
     <transition name='slide-fade' appear>
       <div v-if='isShown.info'class='grid-center' id='thankyou'>
-        <!-- <p><span class='togglebtn'>谢谢</span>你能看到这里。</p> -->
         <p><span class=''>谢谢</span>你能看到这里。</p>
       </div>
     </transition>
@@ -108,11 +114,6 @@
         :showInstall='isShown.install'
         :showSubs='isShown.subscribe'
         class='grid-center'/>
-      <!-- <sw -->
-      <!--   v-if='isShown.info' -->
-      <!--   :showInstall='true' -->
-      <!--   :showSubs='true' -->
-      <!--   class='grid-center'/> -->
     </transition>
     <div style='margin-bottom: 64px' class='grid-center'>
     </div>
