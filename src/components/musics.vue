@@ -52,7 +52,7 @@ export default {
   grid-template-columns 2fr 1fr 1fr 1fr 1fr 14fr 4fr
   grid-row-gap 16px
   height 300px
-  overflow scroll
+  overflow auto
 .music-wrapper
   grid-column 5 / 7
   @media(max-width: 760px)

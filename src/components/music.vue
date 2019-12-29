@@ -28,8 +28,7 @@ export default {
 <style lang="stylus">
 .music-tweet
   p
-    font-size 12px
-    line-height 18px
+    font-size 0.8em
   border-left-style solid
   border-left-width 1px
 

@@ -21,15 +21,31 @@
     </nav>
 
     <router-view/>
+    <Legal/>
   </div>
 </template>
 
 <script>
+import Legal from './components/legal.vue'
 export default {
+  components: {Legal}
 }
 </script>
 
 <style lang="stylus">
+:root
+  font-family -apple-system, BlinkMacSystemFont, "Segoe UI",
+              Roboto, "Helvetica Neue", Helvetica, "PingFang SC",
+              "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  font-size 0.875em
+  line-height 1.7
+  box-sizing border-box
+
+*, ::before, ::after
+  box-sizing inherit
+
 html, body, h1, h2, h3, h4, h5, h6, p, ul
   padding 0
   margin 0
@@ -38,15 +54,6 @@ ul
 a
   text-decoration none
 
-body, html
-  font-family -apple-system, BlinkMacSystemFont, "Segoe UI",
-              Roboto, "Helvetica Neue", Helvetica, "PingFang SC",
-              "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  p
-    font-size 14px
-    line-height 22px
 #app
   width 100%
   color #707070

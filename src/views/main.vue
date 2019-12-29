@@ -163,6 +163,9 @@ export default {
 </script>
 
 <style lang="stylus">
+.main-grid
+  min-height 980px
+
 #welcome-msg
   text-align center
   @media(min-width: 300px) {
